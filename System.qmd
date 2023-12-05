@@ -59,3 +59,16 @@ This dataset is made of `r nrow(systems)` stars described by `r ncol(systems)` v
 
 # Question 4 
 
+```{r}
+summary_table <- tibble(
+  Metric = c("Number of Observations", "Number of Variables", "Number of Missing Values", "Observations with Missing Values"),
+  Value = c(
+    nrow(systems),
+    ncol(systems),
+    sum((is.na(systems))),
+    sum(rowSums(is.na(systems)) > 0)
+  ))
+
+knitr::kable(summary_table)
+```
+This dataset is made of `r nrow(systems)` stars described by `r ncol(systems)` variables, and there are 0 missings values because we replace blank by na. 
