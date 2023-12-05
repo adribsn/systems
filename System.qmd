@@ -23,16 +23,17 @@ library(stringr)
 ```{r}
 here::i_am("systems.Rproj")
 ```
+# I. Main data set imports 
 
-# Question 1 
+## Question 1 
 
 I clearly uploaded everything before reading to fixed it, like that i can have all data files and i will commit only the main data file in my repository. 
 
-# Question 2 
+## Question 2 
 
 link to my github's repository : https://github.com/adribsn/systems
 
-# Question 3 
+## Question 3 
 
 ```{r}
 systems <- vroom(here("the_systems.csv"), na = '_') 
@@ -57,7 +58,7 @@ head_systems <- systems %>%
 
 This dataset is made of `r nrow(systems)` stars described by `r ncol(systems)` variables.
 
-# Question 4 
+## Question 4 
 
 ```{r}
 summary_table <- tibble(
@@ -72,3 +73,21 @@ summary_table <- tibble(
 knitr::kable(summary_table)
 ```
 This dataset is made of `r nrow(systems)` stars described by `r ncol(systems)` variables, and there are 0 missings values because we replace blank by na. 
+
+#II. Introductory Analysis
+
+# Question 5 
+
+```{r}
+filtered_data <- systems %>%
+  filter(!is.na(`EQUIVALENT TEMPERATURE`) & !is.na(`Mass`))
+
+ggplot(filtered_data, aes(x = `EQUIVALENT TEMPERATURE`, y = `Mass`)) +
+  geom_point() +
+  labs(title = "Mass of a star as a function of its temperature",
+       x = "EQUIVALENT TEMPERATURE)",
+       y = "Mass")
+```
+
+
+
