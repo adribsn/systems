@@ -33,6 +33,28 @@ I clearly uploaded everything before reading to fixed it, like that i can have a
 
 link to my github's repository : https://github.com/adribsn/systems
 
+# Question 3 
+
+```{r}
+systems <- vroom(here("the_systems.csv"), na = '_') 
+
+num_systems <- nrow(systems)
+num_variables <- ncol(systems)
+numerical_variables <- sum(sapply(systems, is.numeric))
+
+# Validation message by using if / else
+
+if (num_systems == 1085 && num_variables == 8 && numerical_variables == 2) {
+  cat("Data loaded successfully!")
+} else {
+  cat("Error: Invalid loading process.")
+}
+systems |> select(where(is.numeric))
+
+head_systems <- systems %>%
+  head(n=100) # We use head_df tbecause it allows you to quickly visualize the first observations of a dataset.
+
+```
 
 
 
