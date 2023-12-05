@@ -3,12 +3,11 @@ title: "Systems"
 author: "Adrien Bouisson"
 format: html
 editor: visual
----
 execute: 
   echo: false
   warning: false
   error: false
-
+---
 I upload all packages for the exercise
 
 ```{r}
@@ -52,10 +51,11 @@ if (num_systems == 1085 && num_variables == 8 && numerical_variables == 2) {
 systems |> select(where(is.numeric))
 
 head_systems <- systems %>%
-  head(n=100) # We use head_df tbecause it allows you to quickly visualize the first observations of a dataset.
+  head(n=100) # We use head_df because it allows you to quickly visualize the first observations of a dataset.
 
 ```
 
+This dataset is made of `r nrow(systems)` stars described by `r ncol(systems)` variables.
 
-
+# Question 4 
 
